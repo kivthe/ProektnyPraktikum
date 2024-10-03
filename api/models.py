@@ -1,5 +1,7 @@
 from django.db import models
 
+#====================================================================================================
+
 class Car(models.Model):
   name = models.CharField(max_length=128,null=False,default="")
   picture_code = models.CharField(max_length=32,default="")
@@ -9,6 +11,16 @@ class Car(models.Model):
   price_currency = models.CharField(max_length=32,null=False,default="USD")
   created_at = models.DateTimeField(auto_now_add=True)
 
+#====================================================================================================
+
 class Image(models.Model):
-  image_code = models.IntegerField(null=False,primary_key=True,default=0)
+  image_code = models.IntegerField(primary_key=True,default=0)
   image_path = models.CharField(max_length=256,null=False,default="")
+
+#====================================================================================================
+
+class Page(models.Model):
+  page_code = models.IntegerField(primary_key=True,default=0)
+  page_index_path = models.CharField(max_length=256,null=False,default="index.html")
+
+#====================================================================================================

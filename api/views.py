@@ -4,8 +4,9 @@ from rest_framework import generics, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.core import serializers
-from .serializers import CarSerializer, CreateCarSerializer, ImageSerializer
-from .models import Car, Image
+from django.template import loader
+from .serializers import CarSerializer, CreateCarSerializer, ImageSerializer, PageSerializer
+from .models import Car, Image, Page
 
 #====================================================================================================
 
@@ -62,19 +63,6 @@ class GetCar(APIView):
 
 #====================================================================================================
 
-class GetPage(APIView):
-  def get(self,request,format=None):
-    lookup_url_kwarg = 'page'
-    code = request.GET.get(self.lookup_url_kwarg)
-    if code != None:
-      data = ""
-      if code == 0:
-        return Response(data,status=status.HTTP_200_OK)
-      return Response({'Bad request':'Invalid page code'},status=status.HTTP_404_NOT_FOUND)
-    return Response({'Bad request':'Page code parameter not found in request'},status=status.HTTP_400_BAD_REQUEST)
-
-#====================================================================================================
-
 class GetImage(APIView):
   def get(self,request,format=None):
     lookup_url_kwarg = 'image_code'
@@ -121,5 +109,41 @@ class ViewImagesView(APIView):
       return Response({"Bad request":"No images to view"},status=status.HTTP_404_NOT_FOUND)
     data = serializers.serialize('json', Image.objects.all())
     return Response(data,status=status.HTTP_200_OK)
+
+#====================================================================================================
+
+class GetPage(APIView):
+  lookup_url_kwarg = 'page_code'
+  def get(self,request,fromat=None):
+    pg_code = request.GET.get(self.lookup_url_kwarg)
+    if pg_code != None:
+      pg = Page.objects.filter(page_code=pg_code)
+      if (len(pg) > 0):
+        pg_index_path = pg[0].page_index_path
+        return render(request,pg_index_path,status=status.HTTP_200_OK)
+      else:
+        return Response({"Bad request":"No page associated with the code page"},status=status.HTTP_404_NOT_FOUND)
+    return Response({"Bad request":"No page code found in the request"})
+        
+#====================================================================================================
+
+class CreatePage(APIView):
+  serializer_class = PageSerializer
+  def post(self,request,format=None):
+    serializer = self.serializer_class(data=request.data)
+    if serializer.is_valid():
+      pg_code = serializer.data.get('page_code')
+      pg_index_path = serializer.data.get('page_index_path')
+      query = Page.objects.filter(page_code=pg_code)
+      if query.exists():
+        pg = query[0]
+        pg.image_path = pg_index_path
+        pg.save(update_fields=['image_index_path'])
+        return Response(PageSerializer(pg).data,status=status.HTTP_201_CREATED)
+      else:
+        pg = Page(page_code=pg_code,page_index_path=pg_index_path)
+        pg.save()
+        return Response(PageSerializer(pg).data,status=status.HTTP_201_CREATED)
+    return Response("Serialization is invalid")
 
 #====================================================================================================
