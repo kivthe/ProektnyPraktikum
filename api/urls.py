@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import CarView, CreateCarView, GetCar, GetPage, GetImage, CreateImageView, ViewImagesView, CreatePage
+from .views import CarView, CreateCarView, GetCar, GetPage, GetImage, CreateImageView, ViewImagesView, CreatePage, DataView
 
 #====================================================================================================
 
@@ -11,7 +11,8 @@ urlpatterns = [
     path('create-image/', CreateImageView.as_view()),
     path('view-images/', ViewImagesView.as_view()),
     path('page/', GetPage.as_view()),
-    path('create-page/', CreatePage.as_view())
+    path('create-page/', CreatePage.as_view()),
+    path('data/', DataView.as_view())
 ]
 
 #====================================================================================================

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, FileResponse
+from django.http import HttpResponse, FileResponse, JsonResponse
 from rest_framework import generics, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -7,6 +7,9 @@ from django.core import serializers
 from django.template import loader
 from .serializers import CarSerializer, CreateCarSerializer, ImageSerializer, PageSerializer
 from .models import Car, Image, Page
+from .carloson import Carloson
+from .rentride import Rentride
+import json
 
 #====================================================================================================
 
@@ -145,5 +148,28 @@ class CreatePage(APIView):
         pg.save()
         return Response(PageSerializer(pg).data,status=status.HTTP_201_CREATED)
     return Response("Serialization is invalid")
+
+#====================================================================================================
+
+class CarlosonView(APIView):
+  def get(self,reauest,format=None):
+    Carloson.search()
+    Carloson.save_to_file()
+    Carloson.print_info()
+    return Response(status=status.HTTP_200_OK)
+
+#====================================================================================================
+
+class DataView(APIView):
+  def get(self,request,format=None):
+    #Carloson.search()
+    #Rentride.search(Rentride)
+    #Carloson.save_to_file()
+    #Rentride.save_to_file()
+    #Carloson.print_info()
+    #Rentride.print_info()
+
+    file = open("json_with_cars.json", 'r')
+    return Response(data=file,status=status.HTTP_200_OK)
 
 #====================================================================================================

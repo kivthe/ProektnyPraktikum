@@ -24,3 +24,23 @@ class Page(models.Model):
   page_index_path = models.CharField(max_length=256,null=False,default="index.html")
 
 #====================================================================================================
+
+class CarlosonCar(models.Model):
+  link = models.CharField(max_length=512,primary_key=True,default="Unknown")
+  engine_volume = models.CharField(max_length=128,default="Unknown")
+  power = models.CharField(max_length=32,default="Unknown")
+  year = models.CharField(max_length=8,default="Unknown")
+  fuel_type = models.CharField(max_length=32,default="Unknown")
+  drive_type = models.CharField(max_length=32,default="Unknown")
+  img = models.CharField(max_length=1024,default="Unknown") 
+
+#====================================================================================================
+
+class RentrideCar(models.Model):
+  link = models.CharField(max_length=512,primary_key=True,default="Unknown")
+  engine = models.CharField(max_length=128,default="Unknown")
+  drive = models.CharField(max_length=32,default="Unknown")
+  year = models.CharField(max_length=8,default="Unknown")
+  #img = models.CharField(max_length=1024,default="Unknown") 
+
+#====================================================================================================
