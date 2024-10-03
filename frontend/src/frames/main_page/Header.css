@@ -1,0 +1,24 @@
+.main_container {
+    position: fixed;
+    width: 100%;
+    padding: 1% 0% 1% 0%;
+    
+    background-color: #1b1b1b;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
+/* 
+<uniquifier>: Use a unique and descriptive class name
+<weight>: Use a value from 300 to 700
+*/
+
+h1 {
+    margin: 4px 10px 4px 10px;
+
+    font-family: "Comfortaa", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    color: aliceblue;
+}
