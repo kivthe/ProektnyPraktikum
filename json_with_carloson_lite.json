@@ -1,0 +1,83 @@
+[
+	{
+        "url": "https://carloson.ru/car/arenda-range-rover-autobiography-22",
+        "engine_volume": "3.0 л.",
+        "power": "350 л.с.",
+        "year": "2022 г.",
+        "fuel_type": "Дизель",
+        "drive_type": "Полный",
+        "image": "https://carloson.ru/uploads/images/cars-crm/216516/738e354c-fe1d-4164-8c6d-7b5479d2db0a-740x507.jpg"
+    },
+    {
+        "url": "https://carloson.ru/car/arenda-audi-s8",
+        "engine_volume": "4.0 л.",
+        "power": "571 л.с.",
+        "year": "2020 г.",
+        "fuel_type": "Бензин",
+        "drive_type": "Полный",
+        "image": "https://carloson.ru/uploads/images/cars-crm/216697/9556156b-e1cf-46f3-931b-e1c7e86b7d5f-740x507.jpg"
+    },
+    {
+        "url": "https://carloson.ru/car/arenda-mercedse-cls-450-20",
+        "engine_volume": "3.0 л.",
+        "power": "367 л.с.",
+        "year": "2020 г.",
+        "fuel_type": "Бензин",
+        "drive_type": "Полный",
+        "image": "https://carloson.ru/uploads/images/cars-crm/216688/d3400455-ce04-48f8-9bad-79f9d7bf263a-740x507.jpg"
+    },
+    {
+        "url": "https://carloson.ru/car/arenda-mercedes-sl-43",
+        "engine_volume": "2.0 л.",
+        "power": "381 л.с.",
+        "year": "2022 г.",
+        "fuel_type": "Бензин",
+        "drive_type": "Задний",
+        "image": "https://carloson.ru/uploads/images/cars-crm/216693/f24f78f5-c271-4371-86f8-2ee4c5875317-740x507.jpg"
+    },
+    {
+        "url": "https://carloson.ru/car/arenda-xiaomi-su7-24",
+        "engine_volume": "-",
+        "power": "673 л.с.",
+        "year": "2024 г.",
+        "fuel_type": "Электро",
+        "drive_type": "Полный",
+        "image": "https://carloson.ru/uploads/images/cars-crm/216690/9dc14de9-0c91-440c-ac35-8821b29e4560-740x507.jpg"
+    },
+    {
+        "url": "https://carloson.ru/car/arenda-xiaomi-su-7-max",
+        "engine_volume": "-",
+        "power": "673 л.с.",
+        "year": "2024 г.",
+        "fuel_type": "Электро",
+        "drive_type": "Полный",
+        "image": "https://carloson.ru/uploads/images/cars-crm/216689/d615576b-37d3-4860-8cab-30b3ee6ea774-740x507.jpg"
+    },
+    {
+        "url": "https://carloson.ru/car/arenda-porsche-911-turbo-s-22",
+        "engine_volume": "3.8 л.",
+        "power": "650 л.с.",
+        "year": "2022 г.",
+        "fuel_type": "Бензин",
+        "drive_type": "Полный",
+        "image": "https://carloson.ru/uploads/images/cars-crm/216687/9bd07aee-4e6c-43f0-bfb0-05927044e645-740x507.jpg"
+    },
+    {
+        "url": "https://carloson.ru/car/arenda-porsche-macan-21",
+        "engine_volume": "2.0 л.",
+        "power": "256 л.с.",
+        "year": "2021 г.",
+        "fuel_type": "Бензин",
+        "drive_type": "Полный",
+        "image": "https://carloson.ru/uploads/images/cars-crm/216679/4c76059e-c3c4-41ef-a0b7-c9e60754d256-740x507.jpg"
+    },
+    {
+        "url": "https://carloson.ru/car/arenda-lixiang-l9-gold-23",
+        "engine_volume": "1.5 л.",
+        "power": "449 л.с.",
+        "year": "2023 г.",
+        "fuel_type": "Гибрид",
+        "drive_type": "Полный",
+        "image": "https://carloson.ru/uploads/images/cars-crm/216681/10683643-da30-4e6b-97c4-eb55903876fc-740x507.jpg"
+    }
+]

@@ -211,15 +211,15 @@ class IndexView(APIView):
 
 class CarlosonLiteView(APIView):
   def get(self,request,format=None):
-    file = open('json_with_carloson.json', 'r', encoding="utf-8")
+    file = open('json_with_carloson_lite.json', 'r', encoding="utf-8")
     data = json.load(file)
     return Response(data=data,status=status.HTTP_200_OK)
 
 #====================================================================================================
 
-class RentrideListView(APIView):
+class RentrideLiteView(APIView):
   def get(self,request,format=None):
-    file = open('json_with_rentride.json', 'r', encoding="utf-8")
+    file = open('json_with_rentride_lite.json', 'r', encoding="utf-8")
     data = json.load(file)
     return Response(data=data,status=status.HTTP_200_OK)
 
