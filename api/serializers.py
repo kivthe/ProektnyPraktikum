@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Car, Image, Page, CarlosonCar, RentrideCar
+from .models import Car, Image, Page, CarlosonCar, RentrideCar, React
 
 #====================================================================================================
 
@@ -42,5 +42,12 @@ class RentrideCarSerializer(serializers.ModelSerializer):
   class Meta:
     model = RentrideCar
     fields = ('link','engine','drive','year')
+
+#====================================================================================================
+
+class ReactSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = React
+    fields = ('name','detail')
 
 #====================================================================================================

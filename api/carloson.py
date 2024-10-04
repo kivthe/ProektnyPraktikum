@@ -63,7 +63,7 @@ class Carloson:
         new_car.save()
 
   def save_to_file():
-    filename = "json_with_cars.json"
+    filename = "json_with_carloson.json"
     all_cars = CarlosonCar.objects.all()
     for car in all_cars:
       data = CarlosonCarSerializer(car).data

@@ -5,8 +5,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.core import serializers
 from django.template import loader
-from .serializers import CarSerializer, CreateCarSerializer, ImageSerializer, PageSerializer
-from .models import Car, Image, Page
+from .serializers import CarSerializer, CreateCarSerializer, ImageSerializer, PageSerializer, ReactSerializer
+from .models import Car, Image, Page, React
 from .carloson import Carloson
 from .rentride import Rentride
 import json
@@ -171,5 +171,56 @@ class DataView(APIView):
 
     file = open("json_with_cars.json", 'r')
     return Response(data=file,status=status.HTTP_200_OK)
+
+#====================================================================================================
+
+class ReactView(APIView):
+  serializer_class = ReactSerializer
+  def get(self,request,format=None):
+    detail = [{"name":detail.name,"detail":detail.detail} for detail in React.objects.all()]
+    return Response(detail,status=status.HTTP_200_OK)
+  def post(self,request):
+    serializer=ReactSerializer(data=request.data)
+    if serializer.is_valid():
+      serializer.save()
+    return Response(serializer.data)
+
+#====================================================================================================
+
+class CarlosonView(APIView):
+  def get(self,request,format=None):
+    file = open('json_with_carloson.json', 'r', encoding="utf-8")
+    data = json.load(file)
+    return Response(data=data,status=status.HTTP_200_OK)
+
+#====================================================================================================
+
+class RentrideView(APIView):
+  def get(self,request,format=None):
+    file = open('json_with_rentride.json', 'r', encoding="utf-8")
+    data = json.load(file)
+    return Response(data=data,status=status.HTTP_200_OK)
+
+#====================================================================================================
+
+class IndexView(APIView):
+  def get(self,request,format=None):
+    return render(request,'index.html')
+
+#====================================================================================================
+
+class CarlosonLiteView(APIView):
+  def get(self,request,format=None):
+    file = open('json_with_carloson.json', 'r', encoding="utf-8")
+    data = json.load(file)
+    return Response(data=data,status=status.HTTP_200_OK)
+
+#====================================================================================================
+
+class RentrideListView(APIView):
+  def get(self,request,format=None):
+    file = open('json_with_rentride.json', 'r', encoding="utf-8")
+    data = json.load(file)
+    return Response(data=data,status=status.HTTP_200_OK)
 
 #====================================================================================================

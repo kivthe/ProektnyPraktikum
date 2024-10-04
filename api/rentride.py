@@ -78,7 +78,7 @@ class Rentride:
 #====================================================================================================
 
   def save_to_file():
-    filename = "json_with_cars.json"
+    filename = "json_with_rentride.json"
     all_cars = RentrideCar.objects.all()
     for car in all_cars:
       data = RentrideCarSerializer(car).data

@@ -44,3 +44,9 @@ class RentrideCar(models.Model):
   #img = models.CharField(max_length=1024,default="Unknown") 
 
 #====================================================================================================
+
+class React(models.Model):
+  name = models.CharField(max_length=64)
+  detail = models.CharField(max_length=512)
+
+#====================================================================================================

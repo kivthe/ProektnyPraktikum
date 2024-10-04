@@ -16,9 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from api.views import CarlosonView, RentrideView, IndexView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include('api.urls'))
-    #path('home/', include('frontend.urls'))
+    path('admin/', admin.site.urls,name="admin"),
+    path('api/', include('api.urls'),name="api"),
+    path('home/',IndexView.as_view(),name="home"),
+    path('json_with_carloson',CarlosonView.as_view(),name="carloson"),
+    path('json_with_rentride',RentrideView.as_view(),name="rentride")
+    #path('json_with_carloson_lite',name="carloson_lite"),
+    #path('json_with_rentride_lite',name="rentride_lite")
 ]
