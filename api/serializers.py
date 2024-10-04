@@ -34,14 +34,14 @@ class PageSerializer(serializers.ModelSerializer):
 class CarlosonCarSerializer(serializers.ModelSerializer):
   class Meta:
     model = CarlosonCar
-    fields = ('link','engine_volume','power','year','fuel_type','drive_type','img')
+    fields = ('link','engine_volume','power','year','fuel_type','drive_type','img','name')
 
 #====================================================================================================
 
 class RentrideCarSerializer(serializers.ModelSerializer):
   class Meta:
     model = RentrideCar
-    fields = ('link','engine','drive','year')
+    fields = ('link','engine','drive','year','img','name')
 
 #====================================================================================================
 

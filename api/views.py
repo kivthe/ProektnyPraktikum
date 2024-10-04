@@ -224,3 +224,15 @@ class RentrideLiteView(APIView):
     return Response(data=data,status=status.HTTP_200_OK)
 
 #====================================================================================================
+
+class RefreshDataView(APIView):
+  def get(self,request,format=None):
+    Carloson.search()
+    Rentride.search(Rentride)
+    #Carloson.save_to_file()
+    #Rentride.save_to_file()
+    Carloson.print_info()
+    Rentride.print_info()
+    return Response(status=status.HTTP_200_OK)
+
+#====================================================================================================

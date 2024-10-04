@@ -22,7 +22,12 @@ class Carloson:
       car_info = {}
       car_info['link'] = link.get('href')
       # Найти информацию о автомобиле
-      image_link = link.find("div", class_="img__box").find("img").get("src")
+      image_link = link.find("div", class_="img__box").find("img").get("src")   
+      name_tag = link.find("p", class_="two__block_slide__text__name")
+      if name_tag:
+        name = ''.join([str(content) for content in name_tag.contents if isinstance(content, str)]).strip()
+      else:
+        name = 'Неизвестно'
       info_div = link.find('div', class_='two__block_slide__text__bottom')
       if info_div:
         info_spans = info_div.find_all('span')
@@ -34,6 +39,8 @@ class Carloson:
           car_info['fuel_type'] = info_spans[2].text.strip()
           car_info['drive_type'] = info_spans[3].text.strip()
           car_info['img'] = image_link
+          car_info['name'] = name
+          
         else:
           if len(info_spans) > 4:
             car_info['engine_volume'] = info_spans[0].text.strip()
@@ -42,6 +49,7 @@ class Carloson:
             car_info['fuel_type'] = info_spans[3].text.strip()
             car_info['drive_type'] = info_spans[4].text.strip()
             car_info['img'] = image_link
+            car_info['name'] = name
           else:
             car_info['engine_volume'] = info_spans[0].text.strip()
             car_info['power'] = info_spans[1].text.strip()
@@ -49,6 +57,7 @@ class Carloson:
             car_info['fuel_type'] = info_spans[3].text.strip()
             car_info['drive_type'] = "-"
             car_info['img'] = image_link
+            car_info['name'] = name
       all_car_info.append(car_info)
     for car in all_car_info:
       sorted = CarlosonCar.objects.filter(link=car['link'])
@@ -59,7 +68,8 @@ class Carloson:
                               year=car.get('year', 'Unknown'),
                               fuel_type=car.get('fuel_type', 'Unknown'),
                               drive_type=car.get('drive_type', 'Unknown'),
-                              img=car['img'])
+                              img=car['img'],
+                              name=car['name'])
         new_car.save()
 
   def save_to_file():
@@ -80,4 +90,5 @@ class Carloson:
       print(f"Тип топлива: {car.fuel_type}")
       print(f"Тип привода: {car.drive_type}")
       print(f"Ссылка на картинку: {car.img}")
+      print(f"Название авто: {car.name}")
       print("---")

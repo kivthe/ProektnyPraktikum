@@ -16,14 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from api.views import CarlosonView, RentrideView, CarlosonLiteView, RentrideLiteView, IndexView
+from api.views import CarlosonView, RentrideView, CarlosonLiteView, RentrideLiteView, IndexView,RefreshDataView
 
 urlpatterns = [
     path('admin/', admin.site.urls,name="admin"),
     path('api/', include('api.urls'),name="api"),
     path('home/',IndexView.as_view(),name="home"),
-    path('json_with_carloson',CarlosonView.as_view(),name="carloson"),
-    path('json_with_rentride',RentrideView.as_view(),name="rentride"),
-    path('json_with_carloson_lite',CarlosonLiteView.as_view(),name="carloson_lite"),
-    path('json_with_rentride_lite',RentrideLiteView.as_view(),name="rentride_lite")
+    path('json_with_carloson/',CarlosonView.as_view(),name="carloson"),
+    path('json_with_rentride/',RentrideView.as_view(),name="rentride"),
+    path('json_with_carloson_lite/',CarlosonLiteView.as_view(),name="carloson_lite"),
+    path('json_with_rentride_lite/',RentrideLiteView.as_view(),name="rentride_lite"),
+    path('refresh-data/',RefreshDataView.as_view(),name="refresh_data")
 ]

@@ -32,16 +32,19 @@ class CarlosonCar(models.Model):
   year = models.CharField(max_length=8,default="Unknown")
   fuel_type = models.CharField(max_length=32,default="Unknown")
   drive_type = models.CharField(max_length=32,default="Unknown")
-  img = models.CharField(max_length=1024,default="Unknown") 
+  img = models.CharField(max_length=1024,default="Unknown")
+  name = models.CharField(max_length=128,default="Unknown")
 
 #====================================================================================================
 
 class RentrideCar(models.Model):
   link = models.CharField(max_length=512,primary_key=True,default="Unknown")
+  name = models.CharField(max_length=1024,default="Unknown")
   engine = models.CharField(max_length=128,default="Unknown")
   drive = models.CharField(max_length=32,default="Unknown")
   year = models.CharField(max_length=8,default="Unknown")
-  #img = models.CharField(max_length=1024,default="Unknown") 
+  img = models.CharField(max_length=1024,default="Unknown")
+  price = models.CharField(max_length=128,default="Unknown") 
 
 #====================================================================================================
 
